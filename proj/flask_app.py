@@ -12,7 +12,7 @@ def home():
         conn.execute('CREATE TABLE students (name TEXT, addr TEXT, city TEXT, pin TEXT)')
         print ("Table created successfully");
     except:
-        print("erro")
+        print("error")
     return render_template("home.html")
     conn.close()
 
