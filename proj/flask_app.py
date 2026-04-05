@@ -5,16 +5,13 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    import sqlite3
-    conn = sqlite3.connect('studentdb.db')
+    conn = sql.connect('studentdb.db')
     try:
-        print ("Opened database successfully");
-        conn.execute('CREATE TABLE students (name TEXT, addr TEXT, city TEXT, pin TEXT)')
-        print ("Table created successfully");
+        conn.execute('CREATE TABLE IF NOT EXISTS students (name TEXT, addr TEXT, city TEXT, pin TEXT)')
     except:
         print("error")
-    return render_template("home.html")
     conn.close()
+    return render_template("home.html")
 
 
 @app.route('/enternew')
